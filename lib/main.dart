@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:woody/HomePage.dart';
+import 'package:woody/MainScreen.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: MainScreen(),
     );
   }
 }
