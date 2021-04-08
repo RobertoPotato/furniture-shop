@@ -4,7 +4,6 @@ import 'package:woody/components/my_spacer.dart';
 import 'package:woody/components/product_component.dart';
 import 'package:woody/data/category_data.dart';
 import 'package:woody/data/product_data.dart';
-
 import '../constants.dart';
 
 Widget buildHomePage() {
@@ -201,8 +200,7 @@ Widget buildHomePage() {
               scrollDirection: Axis.horizontal,
               itemCount: categories == null ? 0 : categories.length,
               itemBuilder: (BuildContext context, int index) => CategoryItems(
-                title: categories[index].title,
-                image: categories[index].image,
+                category: categories[index],
               ),
             ),
           ),
