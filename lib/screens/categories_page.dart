@@ -88,11 +88,8 @@ Widget buildCategoriesPage() {
           SliverGrid(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) => ProductComponent(
-                  imageUrl: products[index].imageUrl,
-                  title: products[index].title,
-                  description: products[index].description,
-                  price: products[index].price,
-                  stock: products[index].stock),
+                product: products[index],
+              ),
               childCount: products == null ? 0 : products.length,
             ),
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

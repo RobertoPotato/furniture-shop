@@ -1,91 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:woody/constants.dart';
+import 'package:woody/models/product_model.dart';
+import 'package:get/get.dart';
+import 'package:woody/screens/product_details_page.dart';
+import 'package:woody/controllers/product_controller.dart';
 
 class ProductComponent extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String description;
-  final int price;
-  final int stock;
+  final Product product;
 
-  const ProductComponent(
-      {Key key,
-      @required this.imageUrl,
-      @required this.title,
-      @required this.description,
-      @required this.price,
-      @required this.stock})
-      : super(key: key);
-
-  Widget stockMessage({int stockRem}) {
-    Widget msg;
-
-    if (stockRem < 6) {
-      msg = Text(
-        "$stockRem Item(s) left",
-        style: kRedText,
-      );
-    } else if (stockRem < 15) {
-      msg = Text(
-        "Low in stock",
-        style: kRedText.copyWith(
-          color: Colors.orange,
-        ),
-      );
-    } else {
-      msg = Text(
-        "In stock",
-        style: kRedText.copyWith(
-          color: Colors.green,
-        ),
-      );
-    }
-
-    return msg;
-  }
+  const ProductComponent({
+    Key key,
+    @required this.product,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //TODO Avoid recreating controller object for each instance of product component
+    final productController = new ProductController();
     return Card(
       elevation: 3,
       shadowColor: kColBackGround,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 3.0, horizontal: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset(
-              imageUrl,
-              height: 120,
-              width: double.infinity,
+      child: InkWell(
+        onTap: () {
+          Get.to(
+            () => ProductDetails(
+              product: product,
             ),
-            Text(
-              title,
-              style: kHeadingStyle,
-            ),
-            Text(
-              description,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: kGreyText,
-            ),
-            Text(
-              "Ksh $price",
-              style: kHeadingStyle,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                stockMessage(stockRem: stock),
-                Icon(
-                  Icons.add_box_rounded,
-                  size: 30,
-                  color: kColDarkBrown,
-                ),
-              ],
-            )
-          ],
+          );
+          print("TAP - PRODUCT_ITEM");
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 3.0, horizontal: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset(
+                product.imageUrl,
+                height: 120,
+                width: double.infinity,
+              ),
+              Text(
+                product.title,
+                style: kHeadingStyle,
+              ),
+              Text(
+                product.description,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: kGreyText,
+              ),
+              Text(
+                "Ksh ${product.price}",
+                style: kHeadingStyle,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  productController.stockMessage(stockRem: product.stock),
+                  Icon(
+                    Icons.add_box_rounded,
+                    size: 30,
+                    color: kColDarkBrown,
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

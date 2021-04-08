@@ -1,35 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woody/models/review_model.dart';
 
 class ReviewComponent extends StatelessWidget {
-  final String name;
-  final String content;
-  final double rating;
+  final Review review;
 
-  const ReviewComponent(
-      {Key key,
-      @required this.name,
-      @required this.content,
-      @required this.rating})
-      : super(key: key);
+  const ReviewComponent({Key key, @required this.review}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(name),
+      title: Text(review.name),
       leading: CircleAvatar(
+        radius: 15,
         child: Text(
-          name[0].toString().toUpperCase(),
+          review.name[0].toString().toUpperCase(),
         ),
       ),
       subtitle: Text(
-        content,
+        review.content,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
       ),
       onTap: () {
         Get.defaultDialog(
-          title: name + " " + rating.toString(),
-          middleText: content,
+          title: review.name + " " + review.rating.toString(),
+          middleText: review.content,
         );
       },
     );
