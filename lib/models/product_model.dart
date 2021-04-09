@@ -1,4 +1,5 @@
 class Product {
+  final int id;
   final String imageUrl;
   final String title;
   final String description;
@@ -7,6 +8,7 @@ class Product {
   final double rating;
 
   Product(
+    this.id,
     this.imageUrl,
     this.title,
     this.description,

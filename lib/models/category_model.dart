@@ -5,3 +5,16 @@ class Category {
 
   Category(this.id, this.image, this.title, );
 }
+
+// class Person {
+//   // name
+//   // age
+//
+//   final String name;
+//   final int age;
+//
+//   Person({this.name, this.age});
+//
+//   //Person(this.name, this.age);
+//
+// }

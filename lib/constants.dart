@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// variables prefixed with 'k' are constants...
+/// just so that you can easily distinguish them
 const kColDarkBrown = Color(0xFF8C513B);
 const kColBackGround = Color(0xFFF2ECE9);
 const kColDarkBrownAccent = Color(0xFFD9BFA9);

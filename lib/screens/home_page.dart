@@ -4,6 +4,7 @@ import 'package:woody/components/my_spacer.dart';
 import 'package:woody/components/product_component.dart';
 import 'package:woody/data/category_data.dart';
 import 'package:woody/data/product_data.dart';
+
 import '../constants.dart';
 
 Widget buildHomePage() {
@@ -22,12 +23,16 @@ Widget buildHomePage() {
         /// Header title and search area
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.all(5),
+            padding: const EdgeInsets.only(
+              left: 5,
+              right: 5,
+              bottom: 5,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Furniture Palace",
+                  "Furniture Palace.",
                   style: kAppTitleStyle,
                 ),
                 SizedBox(

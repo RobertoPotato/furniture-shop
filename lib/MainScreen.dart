@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:woody/controllers/main_screen_controller.dart';
-import 'constants.dart';
-import 'screens/home_page.dart';
-import 'screens/categories_page.dart';
-import 'screens/cart_page.dart';
-import 'screens/account_page.dart';
-import 'screens/help_page.dart';
 import 'package:get/get.dart';
+import 'package:woody/controllers/main_screen_controller.dart';
+
+import 'constants.dart';
+import 'screens/account_page.dart';
+import 'screens/cart_page.dart';
+import 'screens/categories_page.dart';
+import 'screens/help_page.dart';
+import 'screens/home_page.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class _MainScreenState extends State<MainScreen> {
           },
         ),
         bottomNavigationBar: GetBuilder<MainScreenController>(
-          builder: (_) {
+          builder: (controller) {
             return BottomNavigationBar(
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
