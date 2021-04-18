@@ -6,6 +6,7 @@ class Product {
   final int price;
   final int stock;
   final double rating;
+  final int categoryId;
 
   Product(
     this.id,
@@ -15,5 +16,6 @@ class Product {
     this.price,
     this.stock,
     this.rating,
+    this.categoryId,
   );
 }

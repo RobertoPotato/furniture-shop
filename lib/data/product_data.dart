@@ -11,6 +11,7 @@ Product product1 = new Product(
   2500,
   62,
   4.1,
+  1,
 );
 Product product2 = new Product(
   2,
@@ -20,6 +21,7 @@ Product product2 = new Product(
   7500,
   12,
   3.7,
+  1,
 );
 Product product3 = new Product(
   3,
@@ -29,6 +31,7 @@ Product product3 = new Product(
   3000,
   11,
   4.5,
+  1,
 );
 Product product4 = new Product(
   4,
@@ -38,6 +41,7 @@ Product product4 = new Product(
   15000,
   2,
   4.9,
+  2,
 );
 Product product5 = new Product(
   5,
@@ -47,6 +51,7 @@ Product product5 = new Product(
   1750,
   3,
   3.6,
+  3,
 );
 Product product6 = new Product(
   6,
@@ -56,6 +61,7 @@ Product product6 = new Product(
   25000,
   7,
   3.9,
+  2,
 );
 Product product7 = new Product(
   7,
@@ -65,6 +71,7 @@ Product product7 = new Product(
   7999,
   2,
   3.5,
+  2,
 );
 Product product8 = new Product(
   8,
@@ -74,6 +81,7 @@ Product product8 = new Product(
   35000,
   1,
   4.9,
+  3,
 );
 Product product9 = new Product(
   9,
@@ -83,6 +91,7 @@ Product product9 = new Product(
   12000,
   16,
   4.7,
+  1,
 );
 Product product10 = new Product(
   10,
@@ -92,6 +101,7 @@ Product product10 = new Product(
   75600,
   2,
   4.3,
+  3,
 );
 Product product11 = new Product(
   11,
@@ -101,6 +111,7 @@ Product product11 = new Product(
   101000,
   1,
   5.0,
+  1,
 );
 Product product12 = new Product(
   12,
@@ -110,15 +121,18 @@ Product product12 = new Product(
   13000,
   23,
   3.7,
+  1,
 );
 Product product13 = new Product(
-    13,
-    'images/—Pngtree—3d improvement section bed furniture_5878917.png',
-    "Dope Bed",
-    kLorem,
-    55000,
-    5,
-    4.1);
+  13,
+  'images/—Pngtree—3d improvement section bed furniture_5878917.png',
+  "Dope Bed",
+  kLorem,
+  55000,
+  5,
+  4.1,
+  4,
+);
 Product product14 = new Product(
     14,
     'images/45254-9-cushion-image-free-transparent-image-hq.png',
@@ -126,7 +140,8 @@ Product product14 = new Product(
     kLorem,
     3000,
     121,
-    4.8);
+    4.8,
+    4);
 
 List<Product> products = [
   product1,
