@@ -4,14 +4,19 @@ import 'package:woody/components/category_underlined_component.dart';
 import 'package:woody/components/my_spacer.dart';
 import 'package:woody/components/product_component.dart';
 import 'package:woody/constants.dart';
+import 'package:woody/controllers/category_controllers.dart';
 import 'package:woody/data/category_data.dart';
 import 'package:woody/data/product_data.dart';
-import 'package:woody/controllers/category_controllers.dart';
+import 'package:woody/models/product_model.dart';
 
 Widget buildCategoriesPage() {
   final categoryController = Get.put(CategoryController());
 
   return GetBuilder<CategoryController>(builder: (_) {
+    List<Product> categoryProducts = products
+        .where((product) =>
+            product.categoryId == categoryController.selectedCategory)
+        .toList();
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 12.0,
@@ -85,19 +90,34 @@ Widget buildCategoriesPage() {
           MySpacer(height: 15.0),
 
           /// Product Items
-          SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) => ProductComponent(
-                product: products[index],
-              ),
-              childCount: products == null ? 0 : products.length,
-            ),
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 250.0,
-                mainAxisSpacing: 5.0,
-                crossAxisSpacing: 5.0,
-                mainAxisExtent: 290),
-          ),
+          categoryController.selectedCategory == 0
+              ? SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) => ProductComponent(
+                      product: products[index],
+                    ),
+                    childCount: products == null ? 0 : products.length,
+                  ),
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 250.0,
+                      mainAxisSpacing: 5.0,
+                      crossAxisSpacing: 5.0,
+                      mainAxisExtent: 290),
+                )
+              : SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) => ProductComponent(
+                      product: categoryProducts[index],
+                    ),
+                    childCount:
+                        categoryProducts == null ? 0 : categoryProducts.length,
+                  ),
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 250.0,
+                      mainAxisSpacing: 5.0,
+                      crossAxisSpacing: 5.0,
+                      mainAxisExtent: 290),
+                ),
         ],
       ),
     );
