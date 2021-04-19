@@ -32,6 +32,7 @@ Widget buildCartPage() {
                       ),
                       GestureDetector(
                           onTap: () {
+                            cartController.buildPricing();
                             Get.bottomSheet(
                               Container(
                                 color: Colors.white,
@@ -45,18 +46,24 @@ Widget buildCartPage() {
                                   child: Wrap(
                                     children: [
                                       CartDetailRow(
-                                          item: "Sub Total",
-                                          description: "Ksh 75000"),
+                                        item: "Sub Total",
+                                        description:
+                                            "Ksh ${cartController.costs.subTotal}",
+                                      ),
                                       CartDetailRow(
-                                          item: "Tax", description: "Ksh 5000"),
+                                        item: "Tax",
+                                        description:
+                                            "Ksh ${cartController.costs.tax}",
+                                      ),
                                       CartDetailRow(
-                                          item: "Delivery",
-                                          description: "Ksh 5000"),
+                                        item: "Delivery",
+                                        description:
+                                            "Ksh ${cartController.costs.delivery}",
+                                      ),
                                       CartDetailRow(
-                                          item: "Total",
-                                          description: "Ksh 85000"),
-                                      SizedBox(
-                                        height: 40.0,
+                                        item: "Total",
+                                        description:
+                                            "Ksh ${cartController.costs.total}",
                                       ),
                                       Container(
                                         width: double.infinity,

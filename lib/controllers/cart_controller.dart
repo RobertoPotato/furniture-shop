@@ -4,6 +4,9 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:woody/constants.dart';
 import 'package:woody/models/cart_product_model.dart';
 import 'package:woody/models/product_model.dart';
+import 'package:woody/models/purchase_costs_model.dart';
+
+enum UpdateCount { ADD, REMOVE }
 
 class CartController extends GetxController {
   /*
@@ -12,6 +15,7 @@ class CartController extends GetxController {
   */
   List<CartProduct> cart = [];
   int deliveryAmountConsant = 1000;
+  PurchaseCosts costs;
 
   void addProductToCart({@required Product product}) {
     /// Check if item is in cart, if true, don't add it to cart else, add it to cart
@@ -28,11 +32,11 @@ class CartController extends GetxController {
       update();
 
       Get.snackbar(
-        "Success",
-        "${product.title} was added to your cart",
+        "${product.title}",
+        "Successfully added to your cart",
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: kColBackGround,
-        duration: Duration(milliseconds: 1200),
+        duration: Duration(seconds: 1),
       );
     }
   }
@@ -42,32 +46,40 @@ class CartController extends GetxController {
     update();
   }
 
-  void increaseItemCount({int productId}) {
-    // Find the product that needs tochange
+  void updateItemCount({
+    @required int productId,
+    @required int stock,
+    @required UpdateCount type,
+  }) {
+    // Find the product that needs to change
     var productToUpdate =
         cart.firstWhere((product) => product.product.id == productId);
 
     // Create the new updated product
-    var newProduct = new CartProduct(
-        product: productToUpdate.product, count: productToUpdate.count + 1);
+    // Find the index of productToUpdate
+    // replace it with the newProduct if the count is between 1
+    // and the maximum available stock
 
-    // Find the index of productToUpdate and replace it with the newProduct
-    cart[cart.indexOf(productToUpdate)] = newProduct;
-    update();
-  }
+    print(
+        "PRODUCT COUNT: ${productToUpdate.count}, \nSTOCK: ${productToUpdate.product.stock}");
 
-  void decreaseItemCount({int productId}) {
-    // Find the product that needs tochange
-    var productToUpdate =
-        cart.firstWhere((product) => product.product.id == productId);
+    if (type == UpdateCount.ADD) {
+      if (productToUpdate.count < productToUpdate.product.stock) {
+        var newProduct = new CartProduct(
+            product: productToUpdate.product, count: productToUpdate.count + 1);
 
-    // Create the new updated product
-    var newProduct = new CartProduct(
-        product: productToUpdate.product, count: productToUpdate.count - 1);
+        cart[cart.indexOf(productToUpdate)] = newProduct;
+        update();
+      }
+    } else {
+      if (productToUpdate.count > 1) {
+        var newProduct = new CartProduct(
+            product: productToUpdate.product, count: productToUpdate.count - 1);
 
-    // Find the index of productToUpdate and replace it with the newProduct
-    cart[cart.indexOf(productToUpdate)] = newProduct;
-    update();
+        cart[cart.indexOf(productToUpdate)] = newProduct;
+        update();
+      }
+    }
   }
 
   int getTotalPrice() {
@@ -85,6 +97,7 @@ class CartController extends GetxController {
     if (cart.length < 2) {
       deliveryPrice = deliveryAmountConsant;
     } else {
+      // TODO Use product counts instead of just cart length
       deliveryPrice = deliveryAmountConsant + 150 * cart.length;
     }
 
@@ -94,5 +107,17 @@ class CartController extends GetxController {
   double calculateTax({int totalPrice}) {
     double tax = 0.16 * totalPrice;
     return tax;
+  }
+
+  void buildPricing() {
+    int subTotal = getTotalPrice();
+    int delivery = calculateDelivery();
+    double tax = calculateTax(totalPrice: subTotal);
+    double total = subTotal + delivery + tax;
+
+    print(" ST: $subTotal \n D: $delivery \n T: $tax \n TTL: $total");
+
+    costs = new PurchaseCosts(subTotal, tax, delivery, total);
+    update();
   }
 }

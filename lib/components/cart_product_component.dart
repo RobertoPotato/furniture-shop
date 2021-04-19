@@ -96,8 +96,11 @@ class CartProduct extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    cartController.decreaseItemCount(
-                                        productId: product.id);
+                                    cartController.updateItemCount(
+                                      productId: product.id,
+                                      stock: product.stock,
+                                      type: UpdateCount.REMOVE,
+                                    );
                                   },
                                   child: Icon(
                                     Icons.remove,
@@ -106,8 +109,11 @@ class CartProduct extends StatelessWidget {
                                 Text(productCount.toString()),
                                 InkWell(
                                   onTap: () {
-                                    cartController.increaseItemCount(
-                                        productId: product.id);
+                                    cartController.updateItemCount(
+                                      productId: product.id,
+                                      type: UpdateCount.ADD,
+                                      stock: product.stock,
+                                    );
                                   },
                                   child: Icon(
                                     Icons.add,

@@ -28,7 +28,6 @@ class ProductComponent extends StatelessWidget {
               product: product,
             ),
           );
-          print("TAP - PRODUCT_ITEM");
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 3.0, horizontal: 5),
@@ -62,7 +61,6 @@ class ProductComponent extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       cartController.addProductToCart(product: product);
-                      print("ADD PRODUCT TO CART");
                     },
                     child: Icon(
                       Icons.add_box_rounded,
