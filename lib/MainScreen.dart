@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:woody/controllers/main_screen_controller.dart';
 
 import 'constants.dart';
+import 'controllers/cart_controller.dart';
 import 'screens/account_page.dart';
 import 'screens/cart_page.dart';
 import 'screens/categories_page.dart';
@@ -27,6 +28,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = Get.put(CartController());
     return SafeArea(
       child: Scaffold(
         backgroundColor: kColBackGround,

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:woody/constants.dart';
-import 'package:woody/models/product_model.dart';
 import 'package:get/get.dart';
-import 'package:woody/screens/product_details_page.dart';
+import 'package:woody/constants.dart';
+import 'package:woody/controllers/cart_controller.dart';
 import 'package:woody/controllers/product_controller.dart';
+import 'package:woody/models/product_model.dart';
+import 'package:woody/screens/product_details_page.dart';
 
 class ProductComponent extends StatelessWidget {
   final Product product;
@@ -15,8 +16,8 @@ class ProductComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO Avoid recreating controller object for each instance of product component
     final productController = new ProductController();
+    final cartController = Get.find<CartController>();
     return Card(
       elevation: 3,
       shadowColor: kColBackGround,
@@ -58,10 +59,16 @@ class ProductComponent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   productController.stockMessage(stockRem: product.stock),
-                  Icon(
-                    Icons.add_box_rounded,
-                    size: 30,
-                    color: kColDarkBrown,
+                  InkWell(
+                    onTap: () {
+                      cartController.addProductToCart(product: product);
+                      print("ADD PRODUCT TO CART");
+                    },
+                    child: Icon(
+                      Icons.add_box_rounded,
+                      size: 30,
+                      color: kColDarkBrown,
+                    ),
                   ),
                 ],
               )

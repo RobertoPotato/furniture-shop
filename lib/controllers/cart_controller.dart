@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:woody/constants.dart';
 import 'package:woody/models/cart_product_model.dart';
 import 'package:woody/models/product_model.dart';
 
@@ -13,12 +15,25 @@ class CartController extends GetxController {
 
   void addProductToCart({@required Product product}) {
     /// Check if item is in cart, if true, don't add it to cart else, add it to cart
-    if (cart.contains(product.id)) {
-      print("PRODUCT ALREADY IN CART");
+
+    if ((cart.firstWhere((prod) => prod.product.id == product.id,
+            orElse: () => null)) !=
+        null) {
+      Get.defaultDialog(
+          title: "${product.title}",
+          middleText: "This product is already in your cart");
     } else {
       CartProduct cartProduct = new CartProduct(product: product, count: 1);
       cart.add(cartProduct);
       update();
+
+      Get.snackbar(
+        "Success",
+        "${product.title} was added to your cart",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: kColBackGround,
+        duration: Duration(milliseconds: 1200),
+      );
     }
   }
 

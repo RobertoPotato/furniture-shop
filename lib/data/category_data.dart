@@ -1,5 +1,6 @@
 import 'package:woody/models/category_model.dart';
 
+Category category0 = new Category(0, "images/all.png", "All");
 Category category1 = new Category(1, "images/chair.png", "Chair");
 Category category3 = new Category(2, "images/couch.png", "Sofa");
 Category category2 = new Category(3, "images/table.png", "Table");
@@ -10,6 +11,7 @@ Category category7 = new Category(7, "images/dining-set.png", "Dining Set");
 Category category8 = new Category(8, "images/tv-set.png", "TV Set");
 
 final List<Category> categories = [
+  category0,
   category1,
   category2,
   category3,
