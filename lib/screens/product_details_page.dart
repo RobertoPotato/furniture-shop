@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:woody/components/my_spacer.dart';
+import 'package:woody/components/review_component.dart';
+import 'package:woody/controllers/cart_controller.dart';
 import 'package:woody/controllers/product_controller.dart';
 import 'package:woody/data/review_data.dart';
 import 'package:woody/models/product_model.dart';
-import 'package:woody/components/review_component.dart';
+
 import '../constants.dart';
-import 'package:woody/components/my_spacer.dart';
 
 class ProductDetails extends StatelessWidget {
   final Product product;
@@ -19,13 +22,8 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
     final productController = new ProductController();
-    print("PRODUCT_DETAILS - ${product.title}");
+    final cartController = Get.find<CartController>();
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.grey[400],
-      //   shadowColor: Colors.transparent,
-      //   iconTheme: IconThemeData(color: Colors.black),
-      // ),
       body: CustomScrollView(
         slivers: [
           /// Product Image Section
@@ -200,9 +198,7 @@ class ProductDetails extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {
-                    print(
-                      "PRESS - ADD TO CART",
-                    );
+                    cartController.addProductToCart(product: product);
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -222,9 +218,7 @@ class ProductDetails extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {
-                    print(
-                      "PRESS - BUY NOW",
-                    );
+                    cartController.buyNow(product: product);
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(

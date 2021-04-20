@@ -41,6 +41,42 @@ class CartController extends GetxController {
     }
   }
 
+  // Simulate an order completion
+  void buyNow({Product product, List<CartProduct> products}) {
+    // If cart is empty, add this product to cart
+    if (cart.isEmpty || cart.length == 0) {
+      addProductToCart(product: product);
+      Get.snackbar(
+        "Working",
+        "Adding ${product.title} to your cart",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: kColBackGround,
+        duration: Duration(seconds: 1),
+      );
+
+      // After 1100ms (random time) show order completion prompt
+      Future.delayed(Duration(milliseconds: 1100), () {
+        Get.snackbar("Working",
+            "Completing your order. (This doesn't actually do anything)",
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: kColBackGround,
+            duration: Duration(milliseconds: 1500),
+            showProgressIndicator: true);
+      });
+    } else {
+      // Only Show order completion if cart isn't empty
+      Get.snackbar("Working",
+          "Completing your order. (This doesn't actually do anything)",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: kColBackGround,
+          duration: Duration(seconds: 1),
+          showProgressIndicator: true);
+    }
+
+    cart.clear();
+    update();
+  }
+
   void removeProductFromCart({@required int productId}) {
     cart.removeWhere((product) => product.product.id == productId);
     update();

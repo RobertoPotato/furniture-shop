@@ -68,7 +68,10 @@ Widget buildCartPage() {
                                       Container(
                                         width: double.infinity,
                                         child: ElevatedButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            cartController.buyNow(
+                                                products: cartController.cart);
+                                          },
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
