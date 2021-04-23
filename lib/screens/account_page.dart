@@ -47,13 +47,10 @@ Widget buildAccountPage() {
             child: Center(
               child: Column(
                 children: [
-                  Card(
-                    child: Image.asset(
-                      "images/sit.png",
-                      width: 150,
-                      height: 150,
-                      fit: BoxFit.contain,
-                    ),
+                  CircleAvatar(
+                    radius: 100,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: AssetImage("images/sit.png"),
                   ),
                   SizedBox(
                     height: 10.0,
@@ -112,9 +109,9 @@ Widget buildAccountPage() {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) => ReviewComponent(
-                review: reviews[index],
+                review: uReviews[index],
               ),
-              childCount: reviews == null ? 0 : reviews.length,
+              childCount: uReviews == null ? 0 : uReviews.length,
             ),
           ),
         ],

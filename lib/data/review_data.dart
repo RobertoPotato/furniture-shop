@@ -11,6 +11,22 @@ Review review5 = new Review("Anna Doe", 4.2, kLorem);
 Review review6 = new Review("Jude Doe", 4.2, kLorem);
 Review review7 = new Review("Ash Doe", 4.2, kLorem);
 
+Review uReview1 = new Review("Cedar Furniture Shop", 5, kLorem);
+Review uReview2 = new Review("HW-Designs", 4.7, kLorem);
+Review uReview3 = new Review("Bamboo Shop", 5, kLorem);
+Review uReview4 = new Review("Tajiri Artisans", 5, kLorem);
+Review uReview5 = new Review("NRB Youth", 4.7, kLorem);
+Review uReview6 = new Review("Dope Designs", 5, kLorem);
+
+List<Review> uReviews = [
+  uReview1,
+  uReview2,
+  uReview3,
+  uReview4,
+  uReview5,
+  uReview6,
+];
+
 List<Review> reviews = [
   review1,
   review2,
