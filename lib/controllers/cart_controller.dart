@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:woody/constants.dart';
+import 'package:woody/controllers/account_controller.dart';
 import 'package:woody/models/cart_product_model.dart';
 import 'package:woody/models/product_model.dart';
 import 'package:woody/models/purchase_costs_model.dart';
@@ -16,6 +17,7 @@ class CartController extends GetxController {
   List<CartProduct> cart = [];
   int deliveryAmountConsant = 1000;
   PurchaseCosts costs;
+  var accountController = Get.find<AccountController>();
 
   void addProductToCart({@required Product product}) {
     /// Check if item is in cart, if true, don't add it to cart else, add it to cart
@@ -30,6 +32,7 @@ class CartController extends GetxController {
       CartProduct cartProduct = new CartProduct(product: product, count: 1);
       cart.add(cartProduct);
       update();
+      accountController.updateProductsInCart(quantity: cart.length);
 
       Get.snackbar(
         "${product.title}",
@@ -46,6 +49,8 @@ class CartController extends GetxController {
     // If cart is empty, add this product to cart
     if (cart.isEmpty || cart.length == 0) {
       addProductToCart(product: product);
+      accountController.updateProductsInTransit(quantity: cart.length);
+      accountController.updateProductsInCart(quantity: 0);
       Get.snackbar(
         "Working",
         "Adding ${product.title} to your cart",
@@ -65,6 +70,8 @@ class CartController extends GetxController {
       });
     } else {
       // Only Show order completion if cart isn't empty
+      accountController.updateProductsInTransit(quantity: cart.length);
+      accountController.updateProductsInCart(quantity: 0);
       Get.snackbar("Working",
           "Completing your order. (This doesn't actually do anything)",
           snackPosition: SnackPosition.BOTTOM,

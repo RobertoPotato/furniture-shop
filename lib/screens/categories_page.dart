@@ -10,7 +10,7 @@ import 'package:woody/data/product_data.dart';
 import 'package:woody/models/product_model.dart';
 
 Widget buildCategoriesPage() {
-  final categoryController = Get.put(CategoryController());
+  final categoryController = Get.find<CategoryController>();
 
   return GetBuilder<CategoryController>(
     builder: (_) {
