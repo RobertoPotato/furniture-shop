@@ -69,6 +69,7 @@ Widget buildCartPage() {
                                         width: double.infinity,
                                         child: ElevatedButton(
                                           onPressed: () {
+                                            Get.back();
                                             cartController.buyNow(
                                                 products: cartController.cart);
                                           },

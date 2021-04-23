@@ -86,6 +86,7 @@ class CartController extends GetxController {
 
   void removeProductFromCart({@required int productId}) {
     cart.removeWhere((product) => product.product.id == productId);
+    accountController.updateProductsInCart(quantity: cart.length);
     update();
   }
 

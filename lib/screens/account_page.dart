@@ -49,18 +49,18 @@ Widget buildAccountPage() {
                 children: [
                   CircleAvatar(
                     radius: 100,
-                    backgroundColor: Colors.transparent,
+                    backgroundColor: kColDarkBrownAccent,
                     backgroundImage: AssetImage("images/sit.png"),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 20.0,
                   ),
                   Text(
-                    "Jane Doe",
+                    "@katja_96 ",
                     style: kGreyText.copyWith(
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        color: kColDarkBrown),
                   ),
                 ],
               ),
@@ -87,6 +87,29 @@ Widget buildAccountPage() {
             ),
           ),
           MySpacer(height: 20.0),
+
+          /// Reviews Section
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Reviews",
+                    style: kSectionTitles,
+                  ),
+                  Text(
+                    "See All",
+                    style: kSeeAll,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          MySpacer(height: 5.0),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -99,7 +122,7 @@ Widget buildAccountPage() {
                         style: kGreyText,
                       )
                     : Text(
-                        "You have ${reviews.length} reviews",
+                        "You have ${uReviews.length} reviews",
                         style: kGreyText,
                       ),
               ),
