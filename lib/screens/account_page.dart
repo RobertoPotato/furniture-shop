@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woody/components/my_spacer.dart';
+import 'package:woody/components/purchase_stat_component.dart';
 import 'package:woody/components/review_component.dart';
 import 'package:woody/constants.dart';
 import 'package:woody/controllers/account_controller.dart';
@@ -120,36 +121,4 @@ Widget buildAccountPage() {
       );
     }),
   );
-}
-
-class PurchaseStatComponent extends StatelessWidget {
-  final String title;
-  final int quantity;
-  final Color color;
-
-  const PurchaseStatComponent(
-      {Key key,
-      @required this.title,
-      @required this.quantity,
-      @required this.color})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: kColDarkBrownAccent,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-        child: Column(
-          children: [
-            Text(
-              this.quantity.toString(),
-              style: kHeadingStyle.copyWith(color: kColDarkBrown),
-            ),
-            Text(this.title)
-          ],
-        ),
-      ),
-    );
-  }
 }
