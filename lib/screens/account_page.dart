@@ -28,15 +28,12 @@ Widget buildAccountPage() {
                 right: 5,
                 bottom: 5,
               ),
-              child: Column(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "My Account",
                     style: kAppTitleStyle,
-                  ),
-                  SizedBox(
-                    height: 20,
                   ),
                 ],
               ),
@@ -47,10 +44,30 @@ Widget buildAccountPage() {
             child: Center(
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 100,
-                    backgroundColor: kColDarkBrownAccent,
-                    backgroundImage: AssetImage("images/sit.png"),
+                  Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: 100,
+                        backgroundColor: kColDarkBrownAccent,
+                        backgroundImage: AssetImage("images/sit.png"),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 20,
+                        child: Material(
+                          borderRadius: BorderRadius.circular(24.0),
+                          color: kColDarkBrown,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Icon(
+                              Icons.camera_alt_rounded,
+                              size: 28,
+                              color: kColBackGround,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 20.0,

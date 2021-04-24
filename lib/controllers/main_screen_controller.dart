@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class MainScreenController extends GetxController {
-  int currentIndex = 0;
+  int currentIndex = 4;
 
   void onSwitchTab(int index) {
     currentIndex = index;
