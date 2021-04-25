@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woody/components/my_spacer.dart';
 import 'package:woody/components/purchase_stat_component.dart';
-import 'package:woody/components/review_component.dart';
 import 'package:woody/constants.dart';
 import 'package:woody/controllers/account_controller.dart';
-import 'package:woody/controllers/cart_controller.dart';
-import 'package:woody/data/review_data.dart';
 
 Widget buildAccountPage() {
   final accountController = Get.find<AccountController>();
-  final cartController = Get.find<CartController>();
   return Padding(
     padding: const EdgeInsets.symmetric(
       horizontal: 12.0,
@@ -73,7 +69,7 @@ Widget buildAccountPage() {
                     height: 20.0,
                   ),
                   Text(
-                    "@katja_96 ",
+                    "@super_user ",
                     style: kGreyText.copyWith(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -101,57 +97,6 @@ Widget buildAccountPage() {
                     quantity: accountController.productsDelivered,
                     color: Colors.blueAccent),
               ],
-            ),
-          ),
-          MySpacer(height: 20.0),
-
-          /// Reviews Section
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12.0,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Reviews",
-                    style: kSectionTitles,
-                  ),
-                  Text(
-                    "See All",
-                    style: kSeeAll,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          MySpacer(height: 5.0),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12.0,
-              ),
-              child: Container(
-                child: reviews == null
-                    ? Text(
-                        "No reviews",
-                        style: kGreyText,
-                      )
-                    : Text(
-                        "You have ${uReviews.length} reviews",
-                        style: kGreyText,
-                      ),
-              ),
-            ),
-          ),
-          MySpacer(height: 10.0),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => ReviewComponent(
-                review: uReviews[index],
-              ),
-              childCount: uReviews == null ? 0 : uReviews.length,
             ),
           ),
         ],
