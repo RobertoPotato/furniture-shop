@@ -15,6 +15,8 @@ class CartController extends GetxController {
     and adds the count to track the number of a given item in the cart
   */
   List<CartProduct> cart = [];
+  List<CartProduct> purchases = [];
+
   int deliveryAmountConsant = 1000;
   PurchaseCosts costs;
   var accountController = Get.find<AccountController>();
@@ -42,6 +44,13 @@ class CartController extends GetxController {
         duration: Duration(seconds: 1),
       );
     }
+  }
+
+  void newPurchase({@required List<CartProduct> products}) {
+    // Get the date
+    // create a new purchase object
+    // Add the new object to the purchases array
+    // call update()
   }
 
   // Simulate an order completion
