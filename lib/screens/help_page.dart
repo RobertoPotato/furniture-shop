@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:woody/components/help_categories.dart';
 import 'package:woody/components/my_spacer.dart';
 import 'package:woody/constants.dart';
 import 'package:woody/data/category_data.dart';
 import 'package:woody/data/how_to_data.dart';
 import 'package:woody/models/how_to_model.dart';
+import 'package:woody/screens/work_credits_page.dart';
 
 Widget buildHelpPage() {
   return Padding(
@@ -69,7 +71,20 @@ Widget buildHelpPage() {
               ),
             ),
           ),
-        )
+        ),
+        MySpacer(height: 20.0),
+        SliverToBoxAdapter(
+          child: GestureDetector(
+            child: Text(
+              "CREDITS",
+              style: kGreyText.copyWith(fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              Get.to(CreditsPage());
+            },
+          ),
+        ),
+        MySpacer(height: 10.0),
       ],
     ),
   );
@@ -91,7 +106,7 @@ class HowToComponent extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               Expanded(
