@@ -70,8 +70,7 @@ class CartController extends GetxController {
 
       // After 1100ms (random time) show order completion prompt
       Future.delayed(Duration(milliseconds: 1100), () {
-        Get.snackbar("Working",
-            "Completing your order. (This doesn't actually do anything)",
+        Get.snackbar("Working", "Completing your order.",
             snackPosition: SnackPosition.BOTTOM,
             backgroundColor: kColBackGround,
             duration: Duration(milliseconds: 1500),
@@ -81,8 +80,7 @@ class CartController extends GetxController {
       // Only Show order completion if cart isn't empty
       accountController.updateProductsInTransit(quantity: cart.length);
       accountController.updateProductsInCart(quantity: 0);
-      Get.snackbar("Working",
-          "Completing your order. (This doesn't actually do anything)",
+      Get.snackbar("Working", "Completing your order.",
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: kColBackGround,
           duration: Duration(seconds: 1),
