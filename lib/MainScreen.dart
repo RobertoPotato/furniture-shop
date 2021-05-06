@@ -15,18 +15,17 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List pages = [
-    buildHomePage(),
-    buildCategoriesPage(),
-    buildCartPage(),
-    buildAccountPage(),
-    buildHelpPage(),
-  ];
-
   final mainScreenController = Get.find<MainScreenController>();
 
   @override
   Widget build(BuildContext context) {
+    List pages = [
+      buildHomePage(context: context),
+      buildCategoriesPage(),
+      buildCartPage(),
+      buildAccountPage(),
+      buildHelpPage(),
+    ];
     return SafeArea(
       child: Scaffold(
         backgroundColor: kColBackGround,

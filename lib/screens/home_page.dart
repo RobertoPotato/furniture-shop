@@ -7,9 +7,14 @@ import 'package:woody/data/product_data.dart';
 
 import '../constants.dart';
 
-Widget buildHomePage() {
+Widget buildHomePage({@required BuildContext context}) {
   var searchController = new TextEditingController();
   ScrollController _sliverScrollController = ScrollController();
+
+  void unFocus(BuildContext context) {
+    FocusScope.of(context).unfocus();
+    searchController.clear();
+  }
 
   return (Padding(
     padding: const EdgeInsets.symmetric(
@@ -76,16 +81,21 @@ Widget buildHomePage() {
                     ),
                     Expanded(
                       flex: 1,
-                      child: Material(
-                        color: kColDarkBrown,
-                        elevation: 5,
-                        borderRadius: BorderRadius.circular(5),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          child: Icon(
-                            Icons.filter_alt_rounded,
-                            size: 34,
-                            color: Colors.white,
+                      child: GestureDetector(
+                        onTap: () {
+                          unFocus(context);
+                        },
+                        child: Material(
+                          color: kColDarkBrown,
+                          elevation: 5,
+                          borderRadius: BorderRadius.circular(5),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: Icon(
+                              Icons.filter_alt_rounded,
+                              size: 34,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
