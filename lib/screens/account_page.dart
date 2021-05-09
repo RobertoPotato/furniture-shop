@@ -121,17 +121,17 @@ Widget buildAccountPage() {
               child: Column(
                 children: [
                   ExtraActions(
-                    leadingIcon: Icons.account_balance_rounded,
+                    leadingIcon: Icons.subscriptions_rounded,
                     title: "Manage Subscriptions",
                     leadingIconColor: Colors.teal,
                   ),
                   ExtraActions(
-                    leadingIcon: Icons.credit_card_rounded,
+                    leadingIcon: Icons.filter_alt_rounded,
                     title: "Manage Filters",
                     leadingIconColor: Colors.blue,
                   ),
                   ExtraActions(
-                    leadingIcon: Icons.credit_card_rounded,
+                    leadingIcon: Icons.pending_rounded,
                     title: "Terms of Service",
                     leadingIconColor: Colors.purple,
                   ),
@@ -155,19 +155,19 @@ Widget buildAccountPage() {
                     leadingIconColor: Colors.teal,
                   ),
                   ExtraActions(
-                    leadingIcon: Icons.credit_card_rounded,
+                    leadingIcon: Icons.money_rounded,
                     title: "Budget Management",
                     leadingIconColor: Colors.blue,
                   ),
                   ExtraActions(
-                    leadingIcon: Icons.credit_card_rounded,
+                    leadingIcon: Icons.account_balance_wallet_rounded,
                     title: "Savings",
                     leadingIconColor: Colors.purple,
                   ),
                   ExtraActions(
                     leadingIcon: Icons.credit_card_rounded,
                     title: "Manage Cards",
-                    leadingIconColor: Colors.tealAccent,
+                    leadingIconColor: Colors.deepOrange,
                   ),
                 ],
               ),

@@ -26,6 +26,7 @@ class CreditsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kColBackGround,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: SingleChildScrollView(
